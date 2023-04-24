@@ -1,19 +1,21 @@
+import 'dart:developer';
+
 import 'package:flutter/material.dart';
 
-import 'analytics_observer.dart';
+import '../analytics_observer.dart';
 
-class MyPage extends StatefulWidget {
-  const MyPage({super.key, required this.title});
+class NOPage extends StatefulWidget {
+  const NOPage({super.key, required this.title});
 
   final String title;
 
   @override
-  State<MyPage> createState() => MyPageState();
+  State<NOPage> createState() => NOPageState();
 }
 
-class MyPageState extends State<MyPage> {
+class NOPageState extends State<NOPage> {
   void sent() {
-    print('object');
+    log('send on back from Navigator Observer');
   }
 
   @override
@@ -29,7 +31,9 @@ class MyPageState extends State<MyPage> {
             const Text(
               'You are on the page',
             ),
-            ElevatedButton(onPressed: () {}, child: const Text('Next Page'))
+            ElevatedButton(
+                onPressed: () {},
+                child: const Text('back to Navigator Observer Page'))
           ],
         ),
       ),
