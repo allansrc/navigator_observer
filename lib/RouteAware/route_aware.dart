@@ -2,7 +2,7 @@ import 'dart:developer';
 
 import 'package:flutter/material.dart';
 
-import '../analytics_observer.dart';
+import '../core/state/my_app_state.dart';
 
 class RouteAwarePage extends StatefulWidget {
   const RouteAwarePage({super.key, required this.title});
@@ -13,22 +13,9 @@ class RouteAwarePage extends StatefulWidget {
   State<RouteAwarePage> createState() => RouteAwarePageState();
 }
 
-class RouteAwarePageState extends State<RouteAwarePage> with RouteAware {
+class RouteAwarePageState extends MyAppState<RouteAwarePage> {
   void sent() {
     log('send on back from RouteAware');
-  }
-
-  @override
-  void didChangeDependencies() {
-    super.didChangeDependencies();
-    AnalyticsObserver.instance.routeObserver
-        .subscribe(this, ModalRoute.of(context)! as PageRoute);
-  }
-
-  @override
-  void dispose() {
-    AnalyticsObserver.instance.routeObserver.unsubscribe(this);
-    super.dispose();
   }
 
   @override
